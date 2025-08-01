@@ -3,6 +3,7 @@ import { Ball } from './sprites/Ball.js';
 import { Brick } from './sprites/Brick.js';
 import { Paddle } from './sprites/Paddle.js';
 import { Collision } from './Collision.js';
+import { TauntSystem } from './TauntSystem.js';
 // import PADDLE_IMAGE from './images/paddle.png';
 // import BALL_IMAGE from './images/ball.png';
 const PADDLE_IMAGE = './images/paddle.png';
@@ -24,15 +25,20 @@ import { createBricks } from './helpers.js';
 
 let gameOver = false;
 let score = 0;
+const tauntSystem = new TauntSystem();
 
 function setGameOver(view:CanvasView){
     view.drawInfo('Game Over!');
     gameOver = false;
+    tauntSystem.stopGame();
+    tauntSystem.showGameOverTaunt(score);
 }
 
 function setGameWin(View: CanvasView){
     View.drawInfo('Game Won!');
     gameOver = false;
+    tauntSystem.stopGame();
+    tauntSystem.showVictoryTaunt();
 }
 
 function gameLoop(
@@ -61,7 +67,10 @@ function gameLoop(
     view.drawScore(score);
     console.log(`Score updated to: ${score}, Bricks left: ${bricks.length}`);
   }
-  if (ball.pos.y > view.canvas.height) gameOver = true;
+  if (ball.pos.y > view.canvas.height) {
+    gameOver = true;
+    tauntSystem.onBallMiss();
+  }
   if (bricks.length === 0) return setGameWin(view);
   if (gameOver) return setGameOver(view);
 
@@ -73,6 +82,9 @@ function startGame(view: CanvasView) {
     score = 0;
     view.drawInfo('');
     view.drawScore(0);
+    tauntSystem.startGame();
+    tauntSystem.showWelcomeTaunt();
+    
     const collision = new Collision();
     const bricks = createBricks();
     const ball = new Ball(
