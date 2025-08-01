@@ -7,6 +7,18 @@ import { TauntSystem } from './TauntSystem.js';
 // import BALL_IMAGE from './images/ball.png';
 const PADDLE_IMAGE = './images/paddle.png';
 const BALL_IMAGE = './images/ball.png';
+// Background Selector Functionality
+function initializeBackgroundSelector() {
+    const bgSelect = document.getElementById('bg-select');
+    const bgImage = document.getElementById('background');
+    if (bgSelect && bgImage) {
+        bgSelect.addEventListener('change', (event) => {
+            const selectedBg = event.target.value;
+            bgImage.src = `./images/${selectedBg}`;
+            console.log(`Background changed to: ${selectedBg}`);
+        });
+    }
+}
 import { PADDLE_SPEED, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_STARTX, BALL_SPEED, BALL_SIZE, BALL_STARTX, BALL_STARTY } from './setup.js';
 import { createBricks } from './helpers.js';
 let gameOver = false;
@@ -69,3 +81,5 @@ function startGame(view) {
 }
 const view = new CanvasView('#playField');
 view.initStartButton(startGame);
+// Initialize background selector
+initializeBackgroundSelector();

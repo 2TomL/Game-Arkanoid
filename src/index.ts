@@ -9,6 +9,20 @@ import { TauntSystem } from './TauntSystem.js';
 const PADDLE_IMAGE = './images/paddle.png';
 const BALL_IMAGE = './images/ball.png';
 
+// Background Selector Functionality
+function initializeBackgroundSelector(): void {
+    const bgSelect = document.getElementById('bg-select') as HTMLSelectElement;
+    const bgImage = document.getElementById('background') as HTMLImageElement;
+    
+    if (bgSelect && bgImage) {
+        bgSelect.addEventListener('change', (event) => {
+            const selectedBg = (event.target as HTMLSelectElement).value;
+            bgImage.src = `./images/${selectedBg}`;
+            console.log(`Background changed to: ${selectedBg}`);
+        });
+    }
+}
+
 
 import{
     PADDLE_SPEED,
@@ -108,3 +122,6 @@ function startGame(view: CanvasView) {
   }
 const view = new CanvasView('#playField');
 view.initStartButton(startGame);
+
+// Initialize background selector
+initializeBackgroundSelector();

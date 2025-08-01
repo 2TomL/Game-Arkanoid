@@ -1,5 +1,39 @@
 /* Arkanoid Game Styling */
 
+/* Background Selector Styling */
+#background-selector {
+  text-align: center;
+  margin: 20px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+#background-selector label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+#bg-select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+#bg-select:hover {
+  border-color: #666;
+}
+
+#bg-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
 :root {
   --width: 1000px;
   --height: 650px;
