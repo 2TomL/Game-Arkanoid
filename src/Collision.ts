@@ -1,7 +1,7 @@
-import { Brick } from './sprites/Brick';
-import { Paddle } from './sprites/Paddle';
-import { Ball } from './sprites/Ball';
-import { CanvasView } from './view/CanvasView';
+import { Brick } from './sprites/Brick.js';
+import { Paddle } from './sprites/Paddle.js';
+import { Ball } from './sprites/Ball.js';
+import { CanvasView } from './view/CanvasView.js';
 
 export class Collision {
   isCollidingBrick(ball: Ball, brick: Brick): boolean {

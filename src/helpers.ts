@@ -1,4 +1,4 @@
-import { Brick } from 'sprites/Brick';
+import { Brick } from './sprites/Brick.js';
 import {
   BRICK_IMAGES,
   LEVEL,
@@ -8,7 +8,7 @@ import {
   BRICK_HEIGHT,
   BRICK_PADDING,
   BRICK_ENERGY
-} from "./setup";
+} from "./setup.js";
 
 export function createBricks(): Brick[] {
   return LEVEL.reduce((ack, element, i) => {

@@ -1,6 +1,6 @@
-import { Brick } from "~/sprites/Brick";
-import { Paddle } from "~/sprites/Paddle";
-import { Ball } from "~/sprites/Ball";
+import { Brick } from "../sprites/Brick.js";
+import { Paddle } from "../sprites/Paddle.js";
+import { Ball } from "../sprites/Ball.js";
 
 export class CanvasView{
     canvas: HTMLCanvasElement;

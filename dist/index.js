@@ -1,7 +1,7 @@
 import { CanvasView } from './view/CanvasView.js';
 import { Ball } from './sprites/Ball.js';
 import { Paddle } from './sprites/Paddle.js';
-import { Collision } from './Collison.js';
+import { Collision } from './Collision.js';
 // import PADDLE_IMAGE from './images/paddle.png';
 // import BALL_IMAGE from './images/ball.png';
 const PADDLE_IMAGE = './images/paddle.png';
@@ -56,11 +56,6 @@ function startGame(view) {
     }, PADDLE_IMAGE);
     gameLoop(view, bricks, paddle, ball, collision);
 }
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded, initializing game...');
-    const view = new CanvasView('#playField');
-    view.initStartButton(startGame);
-    console.log('Game initialized successfully!');
-});
+const view = new CanvasView('#playField');
+view.initStartButton(startGame);
 //# sourceMappingURL=index.js.map

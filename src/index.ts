@@ -1,8 +1,8 @@
-import { CanvasView } from './view/CanvasView';
-import { Ball } from './sprites/Ball';
-import { Brick } from './sprites/Brick';
-import { Paddle } from './sprites/Paddle';
-import { Collision } from './Collison';
+import { CanvasView } from './view/CanvasView.js';
+import { Ball } from './sprites/Ball.js';
+import { Brick } from './sprites/Brick.js';
+import { Paddle } from './sprites/Paddle.js';
+import { Collision } from './Collision.js';
 // import PADDLE_IMAGE from './images/paddle.png';
 // import BALL_IMAGE from './images/ball.png';
 const PADDLE_IMAGE = './images/paddle.png';
@@ -18,9 +18,9 @@ import{
     BALL_SIZE,
     BALL_STARTX,
     BALL_STARTY
-} from './setup';
+} from './setup.js';
 
-import { createBricks } from './helpers';
+import { createBricks } from './helpers.js';
 
 let gameOver = false;
 let score = 0;

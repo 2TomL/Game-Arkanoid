@@ -1,15 +1,10 @@
 export class CanvasView {
     constructor(canvasName) {
-        console.log('CanvasView constructor called with:', canvasName);
         this.canvas = document.querySelector(canvasName);
-        console.log('Canvas element found:', this.canvas);
         this.context = this.canvas.getContext('2d');
         this.scoreDisplay = document.querySelector('#score');
         this.start = document.querySelector('#start');
         this.info = document.querySelector('#info');
-        console.log('Start button found:', this.start);
-        console.log('Score display found:', this.scoreDisplay);
-        console.log('Info display found:', this.info);
     }
     clear() {
         var _a;
