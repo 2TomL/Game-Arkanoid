@@ -5,13 +5,9 @@ export class TauntSystem {
             "Missed again, champ! 🎯",
             "You call that aim? 😏",
             "My grandma hits harder! 👵",
-            "Is this your first time? 🤔",
             "Even a blindfolded turtle could do better! 🐢",
-            "Ouch! That had to hurt... your pride! 😂",
             "Maybe try aiming next time? 🎪",
             "That ball's got a mind of its own! 🤪",
-            "Physics called - they want their laws back! 🧪",
-            "Did you mean to do that? 🙃",
             "The ball is lava! 🔥",
             "Houston, we have a problem! 🚀",
             "Task failed successfully! ✅",
@@ -19,10 +15,9 @@ export class TauntSystem {
             "That's what we call 'creative aiming'! 🎨",
             "The paddle is not a suggestion! 🏓",
             "Gravity: 1, Player: 0! ⚡",
-            "Maybe the real treasure was the misses we made along the way! 💎"
         ];
         this.lastTauntTime = 0;
-        this.tauntCooldown = 1500; // 1.5 seconds between taunts (was 2000)
+        this.tauntCooldown = 5000; // 5 seconds between taunts
         this.isGameActive = false;
         this.missCount = 0;
         this.bubbles = {
@@ -83,10 +78,12 @@ export class TauntSystem {
         setTimeout(() => {
             bubble.classList.add('show');
         }, 10);
-        // Auto-hide after 26 seconds (was 18)
+        console.log(`Taunt "${text}" shown at`, new Date().toLocaleTimeString());
+        // Auto-hide after 2 seconds
         setTimeout(() => {
+            console.log(`Taunt "${text}" hiding at`, new Date().toLocaleTimeString());
             this.hideTaunt(position);
-        }, 26000);
+        }, 2000);
     }
     hideTaunt(position) {
         const bubble = this.bubbles[position];

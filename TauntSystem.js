@@ -22,7 +22,7 @@ export class TauntSystem {
             "Maybe the real treasure was the misses we made along the way! 💎"
         ];
         this.lastTauntTime = 0;
-        this.tauntCooldown = 1500; // 1.5 seconds between taunts (was 2000)
+        this.tauntCooldown = 5000; // 5 seconds between taunts
         this.isGameActive = false;
         this.missCount = 0;
         this.bubbles = {
@@ -83,10 +83,12 @@ export class TauntSystem {
         setTimeout(() => {
             bubble.classList.add('show');
         }, 10);
-        // Auto-hide after 26 seconds (was 18)
+        console.log(`Taunt "${text}" shown at`, new Date().toLocaleTimeString());
+        // Auto-hide after 2 seconds
         setTimeout(() => {
+            console.log(`Taunt "${text}" hiding at`, new Date().toLocaleTimeString());
             this.hideTaunt(position);
-        }, 26000);
+        }, 2000);
     }
     hideTaunt(position) {
         const bubble = this.bubbles[position];
