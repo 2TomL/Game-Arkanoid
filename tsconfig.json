@@ -4,7 +4,7 @@
       "module": "es2015",
       "lib": ["ESNext", "DOM"],
       "jsx": "react",
-      "sourceMap": true,
+      "sourceMap": false,
       "strict": true,
       "moduleResolution": "node",
       "baseUrl": "./src",

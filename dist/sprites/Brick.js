@@ -30,4 +30,3 @@ export class Brick {
         this.brickEnergy = energy;
     }
 }
-//# sourceMappingURL=Brick.js.map

@@ -1,4 +1,4 @@
-import { Vector } from "~/types.js";
+import { Vector } from "../types.js";
 
 export class Brick{
     private brickImage: HTMLImageElement= new Image();

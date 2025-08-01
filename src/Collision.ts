@@ -5,11 +5,14 @@ import { CanvasView } from './view/CanvasView.js';
 
 export class Collision {
   isCollidingBrick(ball: Ball, brick: Brick): boolean {
+    // Add some tolerance for collision detection
+    const tolerance = 2;
+    
     if (
-      ball.pos.x < brick.pos.x + brick.width &&
-      ball.pos.x + ball.width > brick.pos.x &&
-      ball.pos.y < brick.pos.y + brick.height &&
-      ball.pos.y + ball.height > brick.pos.y
+      ball.pos.x + ball.width > brick.pos.x - tolerance &&
+      ball.pos.x < brick.pos.x + brick.width + tolerance &&
+      ball.pos.y + ball.height > brick.pos.y - tolerance &&
+      ball.pos.y < brick.pos.y + brick.height + tolerance
     ) {
       return true;
     }
@@ -20,18 +23,27 @@ export class Collision {
   isCollidingBricks(ball: Ball, bricks: Brick[]): boolean {
     let colliding = false;
 
-    bricks.forEach((brick, i) => {
+    // Loop backwards to safely remove items from array
+    for (let i = bricks.length - 1; i >= 0; i--) {
+      const brick = bricks[i];
       if (this.isCollidingBrick(ball, brick)) {
+        console.log(`Collision detected with brick ${i}, energy before: ${brick.energy}`);
         ball.changeYDirection();
 
-        if (brick.energy === 1) {
+        // Reduce brick energy
+        brick.energy -= 1;
+        console.log(`Brick ${i} energy after hit: ${brick.energy}`);
+
+        // Remove brick if energy is 0 or less
+        if (brick.energy <= 0) {
+          console.log(`Removing brick ${i} - energy depleted`);
           bricks.splice(i, 1);
-        } else {
-          brick.energy -= 1;
         }
+        
         colliding = true;
+        break; // Only handle one collision per frame
       }
-    });
+    }
     return colliding;
   }
 

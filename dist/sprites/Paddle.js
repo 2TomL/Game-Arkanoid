@@ -52,4 +52,3 @@ export class Paddle {
             this.pos.x += this.speed;
     }
 }
-//# sourceMappingURL=Paddle.js.map

@@ -32,4 +32,3 @@ export class CanvasView {
         bricks.forEach(brick => this.drawSprite(brick));
     }
 }
-//# sourceMappingURL=CanvasView.js.map

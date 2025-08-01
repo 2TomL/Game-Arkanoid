@@ -19,7 +19,7 @@ function setGameWin(View) {
     gameOver = false;
 }
 function gameLoop(view, bricks, paddle, ball, collision) {
-    console.log('draw!');
+    console.log(`Game loop - Bricks remaining: ${bricks.length}`);
     view.clear();
     view.drawBricks(bricks);
     view.drawSprite(paddle);
@@ -34,6 +34,7 @@ function gameLoop(view, bricks, paddle, ball, collision) {
     if (collidingBrick) {
         score += 1;
         view.drawScore(score);
+        console.log(`Score updated to: ${score}, Bricks left: ${bricks.length}`);
     }
     if (ball.pos.y > view.canvas.height)
         gameOver = true;
@@ -58,4 +59,3 @@ function startGame(view) {
 }
 const view = new CanvasView('#playField');
 view.initStartButton(startGame);
-//# sourceMappingURL=index.js.map

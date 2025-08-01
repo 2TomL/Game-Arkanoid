@@ -42,7 +42,7 @@ function gameLoop(
     ball: Ball,
     collision: Collision
 ){
-    console.log('draw!');
+    console.log(`Game loop - Bricks remaining: ${bricks.length}`);
   view.clear();
   view.drawBricks(bricks);
   view.drawSprite(paddle);
@@ -59,6 +59,7 @@ function gameLoop(
   if (collidingBrick) {
     score += 1;
     view.drawScore(score);
+    console.log(`Score updated to: ${score}, Bricks left: ${bricks.length}`);
   }
   if (ball.pos.y > view.canvas.height) gameOver = true;
   if (bricks.length === 0) return setGameWin(view);

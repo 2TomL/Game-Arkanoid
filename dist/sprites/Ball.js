@@ -34,4 +34,3 @@ export class Ball {
         this.pos.y += this.speed.y;
     }
 }
-//# sourceMappingURL=Ball.js.map
