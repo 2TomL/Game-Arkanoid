@@ -26,7 +26,6 @@ export class TauntSystem {
             "The ball is lava! 🔥",
             "Houston, we have a problem! 🚀",
             "Task failed successfully! ✅",
-            "404: Skill not found! 💻",
             "Legends never miss... oh wait! 😅",
             "That's what we call 'creative aiming'! 🎨",
             "The paddle is not a suggestion! 🏓",
@@ -35,7 +34,7 @@ export class TauntSystem {
         ];
         
         this.lastTauntTime = 0;
-        this.tauntCooldown = 3000; // 3 seconds between taunts
+        this.tauntCooldown = 1500; // 1.5 seconds between taunts (was 2000)
         this.isGameActive = false;
         this.missCount = 0;
         
@@ -109,10 +108,10 @@ export class TauntSystem {
             bubble.classList.add('show');
         }, 10);
         
-        // Auto-hide after 2.5 seconds
+        // Auto-hide after 8 seconds (was 4.5)
         setTimeout(() => {
             this.hideTaunt(position);
-        }, 2500);
+        }, 8000);
     }
     
     hideTaunt(position: keyof typeof this.bubbles): void {
@@ -122,7 +121,7 @@ export class TauntSystem {
         bubble.classList.remove('show');
         setTimeout(() => {
             bubble.classList.add('hidden');
-        }, 300);
+        }, 500);  // Increased fade out time for smoother transition
     }
     
     hideAllTaunts(): void {
