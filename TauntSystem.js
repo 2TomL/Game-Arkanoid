@@ -83,10 +83,10 @@ export class TauntSystem {
         setTimeout(() => {
             bubble.classList.add('show');
         }, 10);
-        // Auto-hide after 8 seconds (was 4.5)
+        // Auto-hide after 26 seconds (was 18)
         setTimeout(() => {
             this.hideTaunt(position);
-        }, 8000);
+        }, 26000);
     }
     hideTaunt(position) {
         const bubble = this.bubbles[position];

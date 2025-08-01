@@ -16,13 +16,9 @@ export class TauntSystem {
             "Missed again, champ! 🎯",
             "You call that aim? 😏",
             "My grandma hits harder! 👵",
-            "Is this your first time? 🤔",
             "Even a blindfolded turtle could do better! 🐢",
-            "Ouch! That had to hurt... your pride! 😂",
             "Maybe try aiming next time? 🎪",
             "That ball's got a mind of its own! 🤪",
-            "Physics called - they want their laws back! 🧪",
-            "Did you mean to do that? 🙃",
             "The ball is lava! 🔥",
             "Houston, we have a problem! 🚀",
             "Task failed successfully! ✅",
@@ -30,7 +26,6 @@ export class TauntSystem {
             "That's what we call 'creative aiming'! 🎨",
             "The paddle is not a suggestion! 🏓",
             "Gravity: 1, Player: 0! ⚡",
-            "Maybe the real treasure was the misses we made along the way! 💎"
         ];
         
         this.lastTauntTime = 0;
@@ -108,10 +103,10 @@ export class TauntSystem {
             bubble.classList.add('show');
         }, 10);
         
-        // Auto-hide after 8 seconds (was 4.5)
+        // Auto-hide after 26 seconds (was 18)
         setTimeout(() => {
             this.hideTaunt(position);
-        }, 8000);
+        }, 26000);
     }
     
     hideTaunt(position: keyof typeof this.bubbles): void {
