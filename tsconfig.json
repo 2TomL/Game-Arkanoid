@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "es2015",
+      "module": "es2015",
+      "lib": ["ESNext", "DOM"],
+      "jsx": "react",
+      "sourceMap": true,
+      "strict": true,
+      "moduleResolution": "node",
+      "baseUrl": "./src",
+      "outDir": "./dist",
+      "paths": {
+        "~/*": ["./*"]
+      },
+      "typeRoots": ["src/images/"],
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true
+    },
+    "include": ["src/**/*"]
+  }
