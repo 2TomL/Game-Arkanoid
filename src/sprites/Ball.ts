@@ -30,6 +30,9 @@ export class Ball {
   get image(): HTMLImageElement {
     return this.ballImage;
   }
+  get speedY(): number {
+    return this.speed.y;
+  }
   changeYDirection(): void {
     this.speed.y = -this.speed.y;
   }

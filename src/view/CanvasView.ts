@@ -32,6 +32,11 @@ export class CanvasView{
     drawSprite(brick: Brick | Paddle | Ball): void {
         if (!brick) return;
     
+        // Debug logging for paddle
+        if (brick.width === 150) { // Paddle has width 150
+            console.log(`Drawing paddle: x=${brick.pos.x}, y=${brick.pos.y}, width=${brick.width}, height=${brick.height}`);
+        }
+    
         this.context?.drawImage(
           brick.image,
           brick.pos.x,

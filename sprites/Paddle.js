@@ -31,7 +31,7 @@ export class Paddle {
         return this.paddleWidth;
     }
     get height() {
-        return this.paddleWidth;
+        return this.paddleHeight; // Fixed: was paddleWidth
     }
     get pos() {
         return this.position;
@@ -46,9 +46,17 @@ export class Paddle {
         return this.moveRight;
     }
     movePaddle() {
-        if (this.moveLeft)
+        // Move with boundary checking
+        if (this.moveLeft && this.pos.x > 0) {
             this.pos.x -= this.speed;
-        if (this.moveRight)
+        }
+        if (this.moveRight && this.pos.x + this.width < 1000) { // Canvas width is 1000
             this.pos.x += this.speed;
+        }
+        // Clamp paddle within canvas bounds
+        if (this.pos.x < 0)
+            this.pos.x = 0;
+        if (this.pos.x + this.width > 1000)
+            this.pos.x = 1000 - this.width;
     }
 }

@@ -34,11 +34,26 @@ export class Collision {
         return colliding;
     }
     checkBallCollision(ball, paddle, view) {
-        // 1. Check ball collision with paddle
-        if (ball.pos.x + ball.width > paddle.pos.x &&
-            ball.pos.x < paddle.pos.x + paddle.width &&
-            ball.pos.y + ball.height === paddle.pos.y) {
+        // 1. Check ball collision with paddle (robust detection)
+        const ballBottom = ball.pos.y + ball.height;
+        const ballTop = ball.pos.y;
+        const ballLeft = ball.pos.x;
+        const ballRight = ball.pos.x + ball.width;
+        const paddleTop = paddle.pos.y;
+        const paddleBottom = paddle.pos.y + paddle.height;
+        const paddleLeft = paddle.pos.x;
+        const paddleRight = paddle.pos.x + paddle.width;
+        // Check if ball overlaps with paddle area
+        const horizontalOverlap = ballRight > paddleLeft && ballLeft < paddleRight;
+        const verticalOverlap = ballBottom >= paddleTop && ballTop <= paddleBottom;
+        // Extra check: ball is moving downward and hits paddle from above
+        const ballMovingDown = ball.speedY > 0;
+        const ballHittingFromAbove = ballBottom >= paddleTop && ballTop < paddleTop;
+        if (horizontalOverlap && (verticalOverlap || (ballMovingDown && ballHittingFromAbove))) {
+            console.log('Ball hit paddle! Ball Y:', ballBottom, 'Paddle Y:', paddleTop);
             ball.changeYDirection();
+            // Force ball position above paddle to prevent sticking
+            ball.pos.y = paddleTop - ball.height - 1;
         }
         // 2. Check ball collision with walls
         // Ball movement X constraints

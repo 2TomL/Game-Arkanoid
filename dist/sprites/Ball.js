@@ -23,6 +23,9 @@ export class Ball {
     get image() {
         return this.ballImage;
     }
+    get speedY() {
+        return this.speed.y;
+    }
     changeYDirection() {
         this.speed.y = -this.speed.y;
     }

@@ -26,6 +26,10 @@ export class CanvasView {
         var _a;
         if (!brick)
             return;
+        // Debug logging for paddle
+        if (brick.width === 150) { // Paddle has width 150
+            console.log(`Drawing paddle: x=${brick.pos.x}, y=${brick.pos.y}, width=${brick.width}, height=${brick.height}`);
+        }
         (_a = this.context) === null || _a === void 0 ? void 0 : _a.drawImage(brick.image, brick.pos.x, brick.pos.y, brick.width, brick.height);
     }
     drawBricks(bricks) {

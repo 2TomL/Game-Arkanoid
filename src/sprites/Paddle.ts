@@ -26,7 +26,7 @@ export class Paddle{
       return this.paddleWidth;
     }
     get height(): number{
-      return this.paddleWidth;
+      return this.paddleHeight; // Fixed: was paddleWidth
     }
     get pos(): Vector{
       return this.position;
@@ -41,8 +41,17 @@ export class Paddle{
       return this.moveRight;
     }
     movePaddle(): void{
-      if(this.moveLeft)this.pos.x -= this.speed;
-      if(this.moveRight)this.pos.x += this.speed;
+      // Move with boundary checking
+      if(this.moveLeft && this.pos.x > 0) {
+        this.pos.x -= this.speed;
+      }
+      if(this.moveRight && this.pos.x + this.width < 1000) { // Canvas width is 1000
+        this.pos.x += this.speed;
+      }
+      
+      // Clamp paddle within canvas bounds
+      if (this.pos.x < 0) this.pos.x = 0;
+      if (this.pos.x + this.width > 1000) this.pos.x = 1000 - this.width;
     }
     handleKeyUp = (e: KeyboardEvent): void =>{
       if (e.code === "ArrowLeft" || e.key === "ArrowLeft")this.moveLeft=false;
